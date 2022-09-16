@@ -16,9 +16,10 @@ import com.crm.model.company.Customer;
 import com.crm.model.company.dto.CustomerDTO;
 import com.crm.repository.company.CustomerRepository;
 import com.crm.repository.company.HeadquarterRepository;
+import com.crm.repository.company.InvoiceRepository;
 import com.crm.repository.territory.MunicipalityRepository;
+import com.crm.service.CustomerTypeFactory;
 import com.crm.util.converter.CustomerDTOConverter;
-import com.crm.util.converter.CustomerTypeFactory;
 import com.crm.util.exception.CustomerException;
 
 @Service
@@ -26,6 +27,9 @@ public class CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
+	
+	@Autowired
+	InvoiceRepository invoiceRepository;
 	
 	@Autowired
 	HeadquarterRepository headquarterRepository;
@@ -72,6 +76,7 @@ public class CustomerService {
 	public ResponseEntity<String> deleteCustomerByID(Long id) {
 		Optional<Customer> customer=customerRepository.findById(id);
 		if(customer.isPresent()) {
+			invoiceRepository.deleteByCustomer(customer.get().getId().longValue());
 			customerRepository.delete(customer.get());
 			headquarterRepository.deleteByIdCustom(customer.get().getOperationalHeadquarter().getId());
 			headquarterRepository.deleteByIdCustom(customer.get().getRegisteredHeadquarter().getId());
@@ -82,6 +87,10 @@ public class CustomerService {
 	
 	public Page<Customer> sortByAll(Pageable pageable){
 		return customerRepository.findAll(pageable);
+	}
+	
+	public List<Customer> findAll(){
+		return customerRepository.findAll();
 	}
 	
 	public List<Customer> sortByProvince(String order,int page,int size){

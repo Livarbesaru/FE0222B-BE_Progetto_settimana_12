@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 
-import com.crm.util.converter.CustomerTypeFactory;
+import com.crm.service.CustomerTypeFactory;
 import com.crm.util.exception.CRMException;
 
 import lombok.Getter;

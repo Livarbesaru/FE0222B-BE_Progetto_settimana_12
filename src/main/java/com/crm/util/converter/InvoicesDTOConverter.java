@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.crm.model.company.dto.InvoiceDTO;
 import com.crm.model.company.invoices.Invoice;
 import com.crm.repository.company.CustomerRepository;
+import com.crm.service.InvoiceStatusFactory;
 
 @Component
 public class InvoicesDTOConverter implements Converter<InvoiceDTO, Invoice>{

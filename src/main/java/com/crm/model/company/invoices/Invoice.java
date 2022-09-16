@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.crm.model.company.Customer;
-import com.crm.util.converter.InvoiceStatusFactory;
+import com.crm.service.InvoiceStatusFactory;
 import com.crm.util.exception.CRMException;
 
 import lombok.Getter;

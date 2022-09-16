@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Form Studente</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+	<div>
+		<h3>Add Customer</h3>
+		<form action="#" th:action="@{'/web/customer/delete/' + ${id}}" th:object="${customer}" method="post">
+			<h3>Do you want do remove Customer: 
+			<span th:text="${customer.getNameContact()+' '+customer.getSurnameContact()}"></span> ,Company:
+			<span th:text="${customer.getCompanyName()}"></span></h3>
+			<input type="submit" value="Remove customer">
+		</form>
+		<form action="#" th:action="@{/web/customer/list(page=0,size=20)}"method="post">
+			<input type="submit" value="Return back to list">
+		</form>
+	</div>
+
+</body>
+</html>

@@ -16,21 +16,22 @@ public class HeadquarterDTO {
 	private Long municipality;
 
 	public HeadquarterDTO(String street, int streetNumber, String locality, String postalCode,
-			Long idMunicipality) {
+			Long municipality) {
 		super();
 		this.street = street;
 		this.streetNumber = streetNumber;
 		this.locality = locality;
 		this.postalCode = postalCode;
+		this.municipality=municipality;
 	}
 	public HeadquarterDTO(Long id, String street, int streetNumber, String locality, String postalCode,
-			Long idMunicipality) {
+			Long municipality) {
 		super();
 		this.id = id;
 		this.street = street;
 		this.streetNumber = streetNumber;
 		this.locality = locality;
 		this.postalCode = postalCode;
-		this.municipality = idMunicipality;
+		this.municipality = municipality;
 	}
 }

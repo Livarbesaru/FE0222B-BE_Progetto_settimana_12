@@ -9,6 +9,7 @@ import com.crm.model.company.dto.CustomerDTO;
 import com.crm.repository.company.CustomerRepository;
 import com.crm.repository.company.HeadquarterRepository;
 import com.crm.repository.territory.MunicipalityRepository;
+import com.crm.service.CustomerTypeFactory;
 
 @Component
 public class CustomerDTOConverter implements Converter<CustomerDTO, Customer> {

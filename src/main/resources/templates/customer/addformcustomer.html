@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Form Studente</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+	<div>
+		<h3>Add Customer</h3>
+		<form action="#" th:action="@{/web/customer/add}" th:object="${customer}" method="post">
+			<label for="companyName">Company name</label>
+			<input id="companyName" type="text" th:field="*{companyName}">
+			
+			<label for="nameContact">Name contact</label>
+			<input id="nameContact" type="text" th:field="*{nameContact}">
+			
+			<label for="surnameContact">Surname contact</label>
+			<input id="surnameContact" type="text" th:field="*{surnameContact}">
+			
+			<label for="vatNumber">VAT number</label>
+			<input id="vatNumber" type="number" th:field="*{vatNumber}">
+			
+			<label for="email">Email</label>
+			<input id="email" type="email" th:field="*{email}">
+			
+			<label for="annualRevenue">Annual revenue</label>
+			<input id="annualRevenue" type="number" step="0.01" th:field="*{annualRevenue}">
+			
+			<label for="pec">PEC</label>
+			<input id="pec" type="email" th:field="*{pec}">
+			
+			<label for="phone">Phone</label>
+			<input id="phone" type="text" th:field="*{phone}">
+			
+			<label for="phoneContact">Contact's phone</label>
+			<input id="phoneContact" type="text" th:field="*{phoneContact}">
+			
+			<label for="emailContact">Contact's email</label>
+			<input id="emailContact" type="email" th:field="*{emailContact}">
+			
+			<label for="types">Contact's type</label>
+			<select id="types" th:field="*{type}">
+				<option th:each="item: ${types}" th:text="${item.toString()}" 
+						th:value="${item.toString()}"></option>
+			</select>
+			
+			<fieldset>
+				<h3>Operational Headquarter</h3>
+				<label for="streetoperational">Street</label>
+				<input id="streetoperational" type="text" th:field="${operational.street}">
+				
+				<label for="streetNumberoperational">Street number</label>
+				<input id="streetNumberoperational" type="number" th:field="${operational.streetNumber}">
+				
+				<label for="localityoperational">Locality</label>
+				<input id="localityoperational" type="text" th:field="${operational.locality}">
+				
+				<label for="postalCodeoperational">Postal code</label>
+				<input id="postalCodeoperational" type="text" th:field="${operational.postalCode}">
+				
+				<label for="municipalityoperational">Municipality</label>
+				<select id="municipalityoperational" th:field="${operational.municipality}">
+					<option th:each="item: ${municipalities}" th:text="${item.getName()}" 
+						th:value="${item.getIdM()}" ></option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<h3>Registered Headquarter</h3>
+				<label for="streetregistered">Street</label>
+				<input id="streetregistered" type="text" th:field="${registered.street}">
+				
+				<label for="streetNumberregistered">Street number</label>
+				<input id="streetNumberregistered" type="number" th:field="${registered.streetNumber}">
+				
+				<label for="localityregistered">Locality</label>
+				<input id="localityregistered" type="text" th:field="${registered.locality}">
+				
+				<label for="postalCoderegistered">Postal code</label>
+				<input id="postalCoderegistered" type="text" th:field="${registered.postalCode}">
+				
+				<label for="municipalityregistered">Municipality</label>
+				<select id="municipalityregistered" th:field="${registered.municipality}">
+					<option th:each="item: ${municipalities}" th:text="${item.getName()}" 
+						th:value="${item.getIdM()}" ></option>
+				</select>
+			</fieldset>
+			<input type="submit" value"Add order">
+		</form>
+	</div>
+
+</body>
+</html>

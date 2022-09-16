@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Form Studente</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/web/customer/formadd}">Add customer</a>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<th>Name</th>
+				<th>Surname</th>
+				<th>Company</th>
+				<th>Annual revenue</th>
+				<th>Last contact</th>
+				<th>Province</th>
+				<th>Type</th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr th:each="item: ${list}">
+					<td th:text="${item.getNameContact()}"></td>
+					<td th:text="${item.getSurnameContact()}"></td>
+					<td th:text="${item.getCompanyName()}"></td>
+					<td th:text="${item.getAnnualRevenue()}"></td>
+					<td th:text="${item.getDateLastContact()}"></td>
+					<td th:text="${item.getRegisteredHeadquarter().getMunicipality().getProvince().getName()}"></td>
+					<td th:text="${item.getType()}"></td>
+					<td><form th:action="@{'/web/customer/formedit/' + ${item.getId()}}" method="get"><button>Edit</button></form></td>
+					<td><form th:action="@{'/web/customer/formdelete/' + ${item.getId()}}" method="get"><button>Delete</button></form></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

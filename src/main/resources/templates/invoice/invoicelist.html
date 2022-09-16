@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Form Studente</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+	<div>
+		<a th:href="@{/web/invoice/formadd}">Add invoice</a>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<th>Number</th>
+				<th>Amount</th>
+				<th>Date</th>
+				<th>Status</th>
+				<th>Customer</th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr th:each="item: ${list}">
+					<td th:text="${item.getNumber()}"></td>
+					<td th:text="${item.getAmount()}"></td>
+					<td th:text="${(item.getDate().getYear()+1900)+'/'+(item.getDate().getMonth()+1)+'/'+(item.getDate().getDate())}"></td>
+					<td th:text="${item.getStatus().toString().substring(8)}"></td>
+					<td th:text="${item.getCustomer().getNameContact()+' '+item.getCustomer().getSurnameContact()}"></td>
+					<td><form th:action="@{'/web/customer/formedit/' + ${item.getId()}}" method="get"><button>Edit</button></form></td>
+					<td><form th:action="@{'/web/customer/formdelete/' + ${item.getId()}}" method="get"><button>Delete</button></form></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

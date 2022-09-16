@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.crm.model.company.dto.InvoiceDTO;
 import com.crm.model.company.invoices.Invoice;
 import com.crm.repository.company.InvoiceRepository;
-import com.crm.util.converter.InvoiceStatusFactory;
+import com.crm.service.InvoiceStatusFactory;
 import com.crm.util.converter.InvoicesDTOConverter;
 import com.crm.util.exception.InvoiceException;
 
@@ -55,6 +55,10 @@ public class InvoiceService {
 	
 	public Page<Invoice> getAll(Pageable pageable) {
 		return invoiceRepository.findAll(pageable);
+	}
+	
+	public List<Invoice> findAll() {
+		return invoiceRepository.findAll();
 	}
 	
 	public List<Invoice> filterAll(int page, int size, String variable,String value1,String value2, String sort) {

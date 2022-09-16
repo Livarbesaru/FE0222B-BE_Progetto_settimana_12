@@ -25,11 +25,14 @@ public class CustomerDTO {
 	@NotNull private String nameContact;
 	@NotNull private String surnameContact;
 	@NotNull private String phoneContact;
-	@NotNull private HeadquarterDTO operationalHeadquarter=new HeadquarterDTO();
-	@NotNull private HeadquarterDTO registeredHeadquarter=new HeadquarterDTO();
+	@NotNull private HeadquarterDTO operationalHeadquarter;
+	@NotNull private HeadquarterDTO registeredHeadquarter;
 	@NotNull private String type;
 	
-	public CustomerDTO() {}
+	public CustomerDTO() {
+		operationalHeadquarter=new HeadquarterDTO();
+		registeredHeadquarter=new HeadquarterDTO();
+	}
 	
 	public CustomerDTO(String companyName, Long vatNumber, String email, Date dateFirstContact, Date dateLastContact,
 			Float annualRevenue, String pec, String phone, String emailContact, String nameContact, String surnameContact,
